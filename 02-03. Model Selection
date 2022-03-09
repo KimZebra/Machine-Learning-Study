@@ -1,2 +1,9 @@
 # 교차검증 : 학습 데이터를 학습 데이터 + 검증 데이터로 나눔
 # 학습 데이터에 최적화(과적합)되어 모델의 성능이 떨어지는 문제를 개선하기 위함
+# KFold는 레이블의 분포를 참고하지 않고 학습 데이터를 N개로 나누기 때문에 문제가 있음(특정 레이블의 레코드가 한쪽에 쏠리면 모델 성능 저하)
+# StratifiedKFold는 레이블의 분포를 참고하여 균등하게 데이터를 N개로 나눔
+# cross_val_score : StratifiedKFold를 간편하게 사용하기 위한 API
+# GridSearchCV : 교차검증과 하이퍼 파라미터 튜닝을 한 번에 수행
+# 책에선 GridSearchCV의 교차검증 파라미터로 cv=3을 사용했는데 이러면 KFold를 사용하는 것으로 보인다. (블로그 참고 : https://steadiness-193.tistory.com/288)
+# skf = StratifiedKFold(n_splits=5, shuffle=True, random_state = RANDOM_SEED)
+# grid_search = GridSearchCV(...cv=skf...) 이렇게 하면 StratifiedKFold를 사용 가능하다.
