@@ -1,0 +1,38 @@
+1. 문자열 값을 숫자로 변환 : 인코딩
+카테고리형 피처 -> Label Encoding
+회귀를 사용하는 ML -> One-Hot Encoding
+
+2. 변수의 값을 일정한 수준으로 맞춤 : 피처 스케일링
+# 표준화 -> (x - 평균) / stdev 
+평균이 0이고 분산이 1인 가우시안 정규 분포
+# 정규화 -> (x - min) / (max - min)
+서로 다른 피처의 크기를 통일하기 위해 크기를 변환하는 개념. 최소 0 ~ 최대 1
+
+# StandardScaler : 가우시안 정규 분포로 표준화
+SVM, 선형 회귀, 로지스틱 회귀에 사용
+
+# 스케일링 전
+from sklearn.datasets import load_iris
+import pandas as pd
+
+iris = load_iris()
+iris_data = iris.data
+iris_df = pd.DataFrame(data=iris_data, columns=iris.feature_names)
+
+print('feature들의 평균값')
+print(iris_df.mean())
+print('\nfeature들의 분산값')
+print(iris_df.var())
+
+# 스케일링 후
+from sklearn.preprocessing import StandardScaler
+
+scaler=StandardScaler()
+scaler.fit(iris_df)
+## transform 하면 numpy ndarray로 반환돼 이를 dataframe으로 변환
+iris_scaled=scaler.transform(iris_df)
+iris_df_scaled=pd.DataFrame(data=iris_scaled,columns=iris.feature_names)
+print('feature들의 평균값')
+print(iris_df_scaled.mean())
+print('\nfeature들의 분산값')
+print(iris_df_scaled.var())
