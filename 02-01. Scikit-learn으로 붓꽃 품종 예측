@@ -36,3 +36,10 @@ pred=dt_clf.predict(X_test)
 # 정확도 계산
 from sklearn.metrics import accuracy_score
 accuracy_score(y_test,pred)
+
+# CART 설명
+결정 트리는 의사 결정 규칙과 그 결과들을 트리 구조로 도식화한 의사 결정 지원 도구
+CART는 이진 분할에 사용되며 높은 향상도를 갖도록 분할된다.
+향상도 = (노드t의 불순도) - (노드t1과 t2의 불순도 가중평균)
+지니불순도(CART) = 1 - (확률변수의 확률값의 합)
+엔트로피(C4.5) = -SUM(p_j * log(p_j)) j는 j번째 명목변수. p_j는 j 명목변수 값의 비율
