@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+titanic_df = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/titanic_train.csv')
+#데이터 5개
+titanic_df.head()
+#학습 데이터 정보
+print(titanic_df.info())
+#Null 제거 및 확인
+titanic_df['Age'].fillna(titanic_df['Age'].mean(),inplace=True)
+titanic_df['Cabin'].fillna('N',inplace=True)
+titanic_df['Embarked'].fillna('N',inplace=True)
+print(titanic_df.isnull().sum())
+#문자열 피처 확인
+print(titanic_df['Sex'].value_counts())
+print(titanic_df['Cabin'].value_counts())
+print(titanic_df['Embarked'].value_counts())
+#Cabin컬럼 첫글자로 변경(전처리)
+titanic_df['Cabin']=titanic_df['Cabin'].str[:1]
+#데이터 탐색
