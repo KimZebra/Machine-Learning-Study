@@ -36,3 +36,7 @@ print('feature들의 평균값')
 print(iris_df_scaled.mean())
 print('\nfeature들의 분산값')
 print(iris_df_scaled.var())
+
+# MinMaxScaler : 정규화(0~1의 값으로 변환)
+# 데이터를 스케일링 할때는 학습 데이터, 테스트 데이터에 같은 정보로 해야 한다.
+# 먼저 스케일링을 하고 학습/테스트 데이터를 나누는 것이 좋다.
